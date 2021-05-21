@@ -1,6 +1,6 @@
 export interface ResultData {
 	StartDate: string;
-	StartTIme: string;
+	StartTime: string;
 	Open: number;
 	High: number;
 	Low: number;
@@ -17,4 +17,5 @@ export interface FetchDataParams {
 
 export interface StockChartProps {
 	data: ResultData[];
+	xAxisDisplayBy: 'date' | 'time';
 }

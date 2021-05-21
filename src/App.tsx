@@ -12,7 +12,7 @@ function App() {
 	const fetchApiData = async () => {
 		try {
 			const res = await axios.get<ResultData[]>(
-				setUrlParamsBy({ precision: 'Hours', periodInHours: '168' })
+				setUrlParamsBy({ precision: 'Hours', periodInHours: '1' })
 			);
 
 			if (res.status === 200 && res.data) setData(res.data);
@@ -25,7 +25,7 @@ function App() {
 
 	return (
 		<div>
-			<StockChart data={data} />
+			<StockChart data={data} xAxisDisplayBy={'time'} />
 		</div>
 	);
 }
