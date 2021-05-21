@@ -9,7 +9,6 @@ export const StyledMainContainer = styled.div`
 export const StyledTimeSelectionContainer = styled.div`
 	height: 2rem;
 	width: 30%;
-	border: 2px solid black;
 	margin-left: 4.4rem;
 `;
 
@@ -17,4 +16,11 @@ export const StyledTimeButton = styled.button`
 	height: 100%;
 	width: 20%;
 	cursor: pointer;
+	background-color: #3c3fdb7b;
+	border: none;
+	transition: all 0.2s ease-in;
+
+	&:hover {
+		background-color: #4649f5c5;
+	}
 `;

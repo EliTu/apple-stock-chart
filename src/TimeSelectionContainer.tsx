@@ -13,15 +13,16 @@ function TimeSelectionContainer({
 	setTimeData,
 	timeData,
 }: TimeSelectionContainerProps) {
-	const handleButtonClick = (e: SyntheticEvent<HTMLButtonElement>) => {
-		const clickedButtonLabel = e.currentTarget.innerHTML;
+	const handleButtonClick = ({
+		currentTarget,
+	}: SyntheticEvent<HTMLButtonElement>) => {
+		const clickedButtonLabel = currentTarget.innerHTML;
 		const clickedButton = TIME_SELECTION_UNITS.find(
 			({ label }) => label === clickedButtonLabel
 		);
 
-		if (clickedButton && clickedButton.label !== timeData.label) {
+		if (clickedButton && clickedButton.label !== timeData.label)
 			setTimeData(clickedButton);
-		}
 	};
 
 	return (
