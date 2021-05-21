@@ -1,32 +1,41 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import axios from 'axios';
 
 import StockChart from './Chart';
 import { StyledMainContainer } from './styled';
 
-import { ResultData } from './interfaces';
+import { ResultData, TimeData } from './interfaces';
 import { setUrlParamsBy } from './utils';
+import TimeSelectionContainer from './TimeSelectionContainer';
 
 function App() {
-	const [data, setData] = useState<ResultData[]>([]);
+	const [stockData, setStockData] = useState<ResultData[]>([]);
+	const [timeData, setTimeData] = useState<TimeData>({
+		timeUnits: 'Minutes',
+		amount: '1',
+	});
 
-	const fetchApiData = async () => {
+	const fetchApiData = useCallback(async () => {
 		try {
 			const res = await axios.get<ResultData[]>(
-				setUrlParamsBy({ precision: 'Minutes', periodInMinutes: '5' })
+				setUrlParamsBy({
+					precision: timeData.timeUnits,
+					period: timeData.amount,
+				})
 			);
 
-			if (res.status === 200 && res.data) setData(res.data);
+			if (res.status === 200 && res.data) setStockData(res.data);
 		} catch (error) {}
-	};
+	}, [timeData.amount, timeData.timeUnits]);
 
 	useEffect(() => {
 		fetchApiData();
-	}, []);
+	}, [fetchApiData]);
 
 	return (
 		<StyledMainContainer>
-			<StockChart data={data} xAxisDisplayBy={'time'} />
+			<TimeSelectionContainer setTimeData={setTimeData} timeData={timeData} />
+			<StockChart data={stockData} xAxisDisplayBy={'time'} />
 		</StyledMainContainer>
 	);
 }

@@ -29,7 +29,7 @@ export default function StockChart({ data, xAxisDisplayBy }: StockChartProps) {
 			width={1200}
 			height={500}
 			margin={{
-				top: 50,
+				top: 20,
 				right: 10,
 				left: 10,
 				bottom: 0,
