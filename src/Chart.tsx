@@ -26,7 +26,7 @@ export default function StockChart({ data, xAxisDisplayBy }: StockChartProps) {
 
 	return (
 		<AreaChart
-			width={1400}
+			width={1200}
 			height={500}
 			margin={{
 				top: 50,
@@ -45,7 +45,12 @@ export default function StockChart({ data, xAxisDisplayBy }: StockChartProps) {
 				tickMargin={5}
 				allowDecimals={true}
 			/>
-			<Area type='monotone' dataKey='Close' stroke='#8884d8' fill='#8884d8' />
+			<Area
+				type='monotone'
+				dataKey='Close'
+				stroke='#0f04dfa0'
+				fill='#291ef07f'
+			/>
 			<Tooltip />
 		</AreaChart>
 	);

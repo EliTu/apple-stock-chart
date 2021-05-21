@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 
 import StockChart from './Chart';
+import { StyledMainContainer } from './styled';
 
 import { ResultData } from './interfaces';
 import { setUrlParamsBy } from './utils';
@@ -24,9 +25,9 @@ function App() {
 	}, []);
 
 	return (
-		<div>
+		<StyledMainContainer>
 			<StockChart data={data} xAxisDisplayBy={'time'} />
-		</div>
+		</StyledMainContainer>
 	);
 }
 
