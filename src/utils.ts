@@ -6,5 +6,5 @@ export const setUrlParamsBy = ({ period, precision }: FetchDataParams) => {
 	return augmentedUrl;
 };
 
-export const formatStringLength = (value: string, end: number) =>
+export const formatStringByLength = (value: string, end: number) =>
 	value.slice(0, end);

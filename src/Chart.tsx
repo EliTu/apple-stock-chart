@@ -7,13 +7,13 @@ import {
 	CartesianGrid,
 } from 'recharts';
 import { StockChartProps } from './interfaces';
-import { formatStringLength } from './utils';
+import { formatStringByLength } from './utils';
 
 export default function StockChart({ data, xAxisDisplayBy }: StockChartProps) {
 	const formattedChartData = data.map(
 		({ Close, StartTime, StartDate, Date: d }) => {
-			const formattedTime = formatStringLength(StartTime, -6);
-			const formattedDate = formatStringLength(StartDate, -5);
+			const formattedTime = formatStringByLength(StartTime, -6);
+			const formattedDate = formatStringByLength(StartDate, -5);
 			return {
 				time: xAxisDisplayBy === 'date' ? formattedDate : formattedTime,
 				Close,

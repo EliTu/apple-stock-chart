@@ -17,14 +17,14 @@ function App() {
 
 	const fetchApiData = useCallback(async () => {
 		try {
-			const res = await axios.get<ResultData[]>(
+			const { data, status } = await axios.get<ResultData[]>(
 				setUrlParamsBy({
 					precision: timeData.timeUnits,
 					period: timeData.amount,
 				})
 			);
 
-			if (res.status === 200 && res.data) setStockData(res.data);
+			if (status === 200 && data.length) setStockData(data);
 		} catch (error) {}
 	}, [timeData.amount, timeData.timeUnits]);
 
