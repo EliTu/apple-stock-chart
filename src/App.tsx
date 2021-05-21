@@ -1,23 +1,33 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+
+import StockChart from './Chart';
+
 import { ResultData } from './interfaces';
-import { getDataBy } from './utils';
+import { setUrlParamsBy } from './utils';
 
 function App() {
-	const [httpRequestResult, setHttpRequestResult] = useState<ResultData[]>([]);
+	const [data, setData] = useState<ResultData[]>([]);
 
 	const fetchApiData = async () => {
-		const res = await getDataBy({ precision: 'Hours', periodInMinutes: '1' });
+		try {
+			const res = await axios.get<ResultData[]>(
+				setUrlParamsBy({ precision: 'Hours', periodInHours: '168' })
+			);
 
-		if (res.status === 200 && res.data) setHttpRequestResult(res.data);
+			if (res.status === 200 && res.data) setData(res.data);
+		} catch (error) {}
 	};
 
-	console.log(httpRequestResult);
 	useEffect(() => {
 		fetchApiData();
 	}, []);
 
-	return <div className='App'></div>;
+	return (
+		<div>
+			<StockChart data={data} />
+		</div>
+	);
 }
 
 export default App;

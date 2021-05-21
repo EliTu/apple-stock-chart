@@ -14,3 +14,7 @@ export interface FetchDataParams {
 	periodInMinutes?: '1' | '5';
 	periodInHours?: '1' | '168'; // 168 hours = 1 week
 }
+
+export interface StockChartProps {
+	data: ResultData[];
+}
