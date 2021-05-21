@@ -1,19 +1,26 @@
-import { AreaChart, Area, XAxis, YAxis, Tooltip } from 'recharts';
+import {
+	AreaChart,
+	Area,
+	XAxis,
+	YAxis,
+	Tooltip,
+	CartesianGrid,
+} from 'recharts';
 import { StockChartProps } from './interfaces';
+import { formatStringLength } from './utils';
 
 export default function StockChart({ data, xAxisDisplayBy }: StockChartProps) {
-	const formattedChartData = data
-		.sort((a, b) => {
-			return new Date(a.Date).getTime() - new Date(b.Date).getTime();
-		})
-		.map(({ Close, StartTime, StartDate, Date: d }) => {
-			const formattedTime = StartTime.slice(0, -6);
+	const formattedChartData = data.map(
+		({ Close, StartTime, StartDate, Date: d }) => {
+			const formattedTime = formatStringLength(StartTime, -6);
+			const formattedDate = formatStringLength(StartDate, -5);
 			return {
-				time: xAxisDisplayBy === 'date' ? StartDate : formattedTime,
+				time: xAxisDisplayBy === 'date' ? formattedDate : formattedTime,
 				Close,
 				date: new Date(d),
 			};
-		});
+		}
+	);
 
 	console.log(formattedChartData);
 
@@ -21,17 +28,24 @@ export default function StockChart({ data, xAxisDisplayBy }: StockChartProps) {
 		<AreaChart
 			width={1400}
 			height={500}
-			// margin={{
-			// 	top: 10,
-			// 	right: 30,
-			// 	left: 0,
-			// 	bottom: 0,
-			// }}
+			margin={{
+				top: 50,
+				right: 10,
+				left: 10,
+				bottom: 0,
+			}}
 			data={formattedChartData}
 		>
-			<Area type='monotone' dataKey='Close' stroke='#8884d8' />
-			<XAxis dataKey='time' />
-			<YAxis dataKey='Close' />
+			<CartesianGrid strokeDasharray='3 3' />
+			<XAxis dataKey='time' tickMargin={5} />
+			<YAxis
+				dataKey='Close'
+				domain={['dataMin', 'dataMax']}
+				tickCount={5}
+				tickMargin={5}
+				allowDecimals={true}
+			/>
+			<Area type='monotone' dataKey='Close' stroke='#8884d8' fill='#8884d8' />
 			<Tooltip />
 		</AreaChart>
 	);

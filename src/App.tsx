@@ -12,7 +12,7 @@ function App() {
 	const fetchApiData = async () => {
 		try {
 			const res = await axios.get<ResultData[]>(
-				setUrlParamsBy({ precision: 'Hours', periodInHours: '1' })
+				setUrlParamsBy({ precision: 'Minutes', periodInMinutes: '5' })
 			);
 
 			if (res.status === 200 && res.data) setData(res.data);

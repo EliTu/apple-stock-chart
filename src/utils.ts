@@ -11,3 +11,6 @@ export const setUrlParamsBy = ({
 
 	return augmentedUrl;
 };
+
+export const formatStringLength = (value: string, end: number) =>
+	value.slice(0, end);
