@@ -1,6 +1,6 @@
 import { TooltipProps } from 'recharts';
 import { ChartData } from './interfaces';
-import { StyledTooltipContainer, StyledSpan } from './styled';
+import { StyledTooltipContainer, StyledTooltipLine } from './styled';
 
 function CustomTooltip({ active, payload }: TooltipProps<any, any>) {
 	if (!active || !payload?.length) return null;
@@ -8,12 +8,12 @@ function CustomTooltip({ active, payload }: TooltipProps<any, any>) {
 	const { Close, Date, Time }: ChartData = payload[0].payload;
 	return (
 		<StyledTooltipContainer>
-			<StyledSpan>
+			<StyledTooltipLine>
 				<b>Date/Time:</b> {Date} {Time}
-			</StyledSpan>
-			<StyledSpan>
+			</StyledTooltipLine>
+			<StyledTooltipLine>
 				<b>Close:</b> {Close}
-			</StyledSpan>
+			</StyledTooltipLine>
 		</StyledTooltipContainer>
 	);
 }

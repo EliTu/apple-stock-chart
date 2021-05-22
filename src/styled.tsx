@@ -14,6 +14,13 @@ export const StyledMainContainer = styled(StyledResponsiveContainer)`
 	position: relative;
 `;
 
+export const StyledCenteredDiv = styled.div`
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+`;
+
 export const StyledErrorModal = styled.div`
 	position: absolute;
 	top: 0;
@@ -60,7 +67,17 @@ export const StyledTooltipContainer = styled.div`
 	border-radius: 3px;
 `;
 
-export const StyledSpan = styled.span`
+export const StyledTooltipLine = styled.span`
 	display: flex;
 	justify-content: space-between;
+`;
+
+export const StyledClickableSpan = styled.span`
+	color: #686bf7ca;
+	transition: all 0.2s ease-in;
+	cursor: pointer;
+
+	&:hover {
+		color: #272af3df;
+	}
 `;
