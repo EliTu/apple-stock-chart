@@ -54,7 +54,7 @@ export const StyledErrorModal = styled.div`
 	border-radius: 3px;
 `;
 
-export const StyledTimeSelectionContainer = styled.div`
+export const StyledTimeToggleContainer = styled.div`
 	height: 2rem;
 	width: 30%;
 	margin-left: 4.4rem;

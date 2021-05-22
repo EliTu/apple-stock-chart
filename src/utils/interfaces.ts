@@ -34,7 +34,7 @@ export interface StockChartProps {
 	isError: boolean;
 }
 
-export interface TimeSelectionContainerProps {
+export interface TimeToggleContainerProps {
 	timeData: TimeData;
 	isLoadingData: boolean;
 	setTimeData: React.Dispatch<React.SetStateAction<TimeData>>;

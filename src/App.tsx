@@ -5,7 +5,7 @@ import { ThemeProvider } from 'styled-components';
 import Overview from './components/UI/Overview';
 import StockChart from './components/StockChart';
 import ErrorModal from './components/errors/ErrorModal';
-import TimeSelectionContainer from './components/TimeSelectionContainer';
+import TimeToggle from './components/TimeToggle';
 
 import { StyledMainContainer } from './styles/styled';
 import { ResultData, TimeData } from './utils/interfaces';
@@ -51,7 +51,7 @@ function App() {
 			<StyledMainContainer>
 				<ErrorModal error={error} />
 				<Overview />
-				<TimeSelectionContainer
+				<TimeToggle
 					setTimeData={setTimeData}
 					timeData={timeData}
 					isLoadingData={isLoadingData}
