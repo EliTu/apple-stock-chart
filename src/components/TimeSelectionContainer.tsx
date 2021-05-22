@@ -3,7 +3,7 @@ import { SyntheticEvent } from 'react';
 import Loader from './UI/Loader';
 
 import { TimeData, TimeSelectionContainerProps } from '../utils/interfaces';
-import { StyledTimeSelectionContainer, StyledTimeButton } from './styled';
+import { StyledTimeSelectionContainer, StyledTimeButton } from '../styles/styled';
 
 const TIME_SELECTION_UNITS: TimeData[] = [
 	{ timeUnits: 'Minutes', amount: '1', label: '1 Min' },

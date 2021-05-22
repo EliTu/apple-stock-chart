@@ -26,11 +26,11 @@ export const StyledOverviewContainer = styled(StyledResponsiveContainer)`
 	}
 
 	span {
-		color: #6e6e6ef4;
+		color: ${({ theme }) => theme.grey_pale};
 
 		a {
 			text-decoration: none;
-			color: #686bf7ca;
+			color: ${({ theme }) => theme.link_blue};
 		}
 	}
 `;
@@ -49,8 +49,8 @@ export const StyledErrorModal = styled.div`
 	width: auto;
 	height: auto;
 	padding: 1rem;
-	background-color: #f333339b;
-	color: white;
+	background-color: ${({ theme }) => theme.error_red};
+	color: ${({ theme }) => theme.main_white};
 	border-radius: 3px;
 `;
 
@@ -70,12 +70,15 @@ export const StyledTimeButton = styled.button<{
 	cursor: pointer;
 	background: none;
 	border: none;
-	border-bottom: ${({ isSelected }) =>
-		isSelected ? '4px solid #1317fcd6' : '2px solid #3461f7ca'};
+	border-bottom: ${({ isSelected, theme }) =>
+		isSelected
+			? `4px solid ${theme.stroke_blue}`
+			: `2px solid ${theme.pale_blue}`};
 	transition: all 0.2s ease-in;
-	background-color: ${({ isLoading }) => (isLoading ? '#161aec96' : '')};
+	background-color: ${({ isLoading, theme }) =>
+		isLoading ? theme.secondary_blue : ''};
 	&:hover {
-		background-color: #7476ff55;
+		background-color: ${({ theme }) => theme.pale_blue};
 	}
 `;
 
@@ -86,10 +89,10 @@ export const StyledTooltipContainer = styled.div`
 	height: auto;
 	width: 100%;
 	padding: 0.3rem;
-	border: 1px solid #adcaf790;
-	background-color: #161aec96;
-	color: #ebebebeb;
-	text-shadow: 0 0 1px #e4e0d9e1;
+	border: ${({ theme }) => `1px solid ${theme.shadow_pale}`};
+	background-color: ${({ theme }) => theme.secondary_blue};
+	color: ${({ theme }) => theme.main_white};
+	text-shadow: ${({ theme }) => `0 0 1px ${theme.grey_pale}`};
 	font-size: 14px;
 	border-radius: 3px;
 `;
@@ -100,12 +103,12 @@ export const StyledTooltipLine = styled.span`
 `;
 
 export const StyledClickableSpan = styled.span`
-	color: #686bf7ca;
+	color: ${({ theme }) => theme.link_blue};
 	transition: all 0.2s ease-in;
 	cursor: pointer;
 
 	&:hover {
-		color: #272af3df;
+		color: ${({ theme }) => theme.main_blue};
 	}
 `;
 

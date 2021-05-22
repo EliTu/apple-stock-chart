@@ -10,6 +10,7 @@ import {
 import CustomTooltip from './UI/CustomTooltip';
 import { ChartData, StockChartProps } from '../utils/interfaces';
 import { formatStringByLength } from '../utils/utils';
+import { THEME_COLORS } from '../styles/themeColors';
 
 export default function StockChart({
 	data,
@@ -47,8 +48,16 @@ export default function StockChart({
 				<CartesianGrid strokeDasharray='3 3' />
 				<defs>
 					<linearGradient id='colorUv' x1='0' y1='0' x2='0' y2='1'>
-						<stop offset='40%' stopColor='#063cebcf' stopOpacity={0.7} />
-						<stop offset='90%' stopColor='#FFFFFF' stopOpacity={0.1} />
+						<stop
+							offset='40%'
+							stopColor={THEME_COLORS.main_blue}
+							stopOpacity={0.7}
+						/>
+						<stop
+							offset='90%'
+							stopColor={THEME_COLORS.main_white}
+							stopOpacity={0.1}
+						/>
 					</linearGradient>
 				</defs>
 				<XAxis
@@ -67,7 +76,7 @@ export default function StockChart({
 				<Area
 					type='monotone'
 					dataKey='Close'
-					stroke='#080185f0'
+					stroke={THEME_COLORS.stroke_blue}
 					fill='url(#colorUv)'
 					fillOpacity={0.4}
 				/>

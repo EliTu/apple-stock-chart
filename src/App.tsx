@@ -1,13 +1,15 @@
 import { useState, useEffect, useCallback } from 'react';
 import axios from 'axios';
+import { ThemeProvider } from 'styled-components';
 
 import Overview from './components/UI/Overview';
 import StockChart from './components/StockChart';
 import ErrorModal from './components/errors/ErrorModal';
 import TimeSelectionContainer from './components/TimeSelectionContainer';
 
-import { StyledMainContainer } from './components/styled';
+import { StyledMainContainer } from './styles/styled';
 import { ResultData, TimeData } from './utils/interfaces';
+import { THEME_COLORS } from './styles/themeColors';
 import { setUrlParamsBy } from './utils/utils';
 
 function App() {
@@ -45,23 +47,25 @@ function App() {
 	}, [fetchApiData]);
 
 	return (
-		<StyledMainContainer>
-			<ErrorModal error={error} />
-			<Overview />
-			<TimeSelectionContainer
-				setTimeData={setTimeData}
-				timeData={timeData}
-				isLoadingData={isLoadingData}
-			/>
-			<StockChart
-				data={stockData}
-				isLoadingData={isLoadingData}
-				isError={!!error}
-				xAxisDisplayBy={
-					timeData.label && /week/gi.test(timeData.label) ? 'date' : 'time'
-				}
-			/>
-		</StyledMainContainer>
+		<ThemeProvider theme={THEME_COLORS}>
+			<StyledMainContainer>
+				<ErrorModal error={error} />
+				<Overview />
+				<TimeSelectionContainer
+					setTimeData={setTimeData}
+					timeData={timeData}
+					isLoadingData={isLoadingData}
+				/>
+				<StockChart
+					data={stockData}
+					isLoadingData={isLoadingData}
+					isError={!!error}
+					xAxisDisplayBy={
+						timeData.label && /week/gi.test(timeData.label) ? 'date' : 'time'
+					}
+				/>
+			</StyledMainContainer>
+		</ThemeProvider>
 	);
 }
 

@@ -1,4 +1,4 @@
-import { StyledOverviewContainer } from '../styled';
+import { StyledOverviewContainer } from '../../styles/styled';
 
 function Overview() {
 	return (

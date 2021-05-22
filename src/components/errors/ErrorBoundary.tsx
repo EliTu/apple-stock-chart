@@ -3,7 +3,7 @@ import {
 	StyledCenteredDiv,
 	StyledClickableSpan,
 	StyledResponsiveContainer,
-} from '../styled';
+} from '../../styles/styled';
 
 export class ErrorBoundary extends React.Component {
 	state = { hasError: false };
