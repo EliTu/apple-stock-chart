@@ -7,10 +7,9 @@ import {
 	CartesianGrid,
 	ResponsiveContainer,
 } from 'recharts';
-import CustomTooltip from './CustomTooltip';
-import { ChartData, StockChartProps } from './interfaces';
-import { StyledResponsiveContainer } from './styled';
-import { formatStringByLength } from './utils';
+import CustomTooltip from './UI/CustomTooltip';
+import { ChartData, StockChartProps } from '../utils/interfaces';
+import { formatStringByLength } from '../utils/utils';
 
 export default function StockChart({
 	data,

@@ -1,6 +1,6 @@
 import { TooltipProps } from 'recharts';
-import { ChartData } from './interfaces';
-import { StyledTooltipContainer, StyledTooltipLine } from './styled';
+import { ChartData } from '../../utils/interfaces';
+import { StyledTooltipContainer, StyledTooltipLine } from '../styled';
 
 function CustomTooltip({ active, payload }: TooltipProps<any, any>) {
 	if (!active || !payload?.length) return null;

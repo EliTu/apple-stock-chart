@@ -1,5 +1,5 @@
-import { ErrorModalProps } from './interfaces';
-import { StyledErrorModal } from './styled';
+import { ErrorModalProps } from '../../utils/interfaces';
+import { StyledErrorModal } from '../styled';
 
 function ErrorModal({ error }: ErrorModalProps) {
 	return error ? (

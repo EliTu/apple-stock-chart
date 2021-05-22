@@ -1,8 +1,8 @@
 import { SyntheticEvent } from 'react';
 
-import Loader from './Loader';
+import Loader from './UI/Loader';
 
-import { TimeData, TimeSelectionContainerProps } from './interfaces';
+import { TimeData, TimeSelectionContainerProps } from '../utils/interfaces';
 import { StyledTimeSelectionContainer, StyledTimeButton } from './styled';
 
 const TIME_SELECTION_UNITS: TimeData[] = [

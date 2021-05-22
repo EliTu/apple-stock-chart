@@ -1,14 +1,14 @@
 import { useState, useEffect, useCallback } from 'react';
 import axios from 'axios';
 
-import Overview from './Overview';
-import StockChart from './StockChart';
-import ErrorModal from './ErrorModal';
-import TimeSelectionContainer from './TimeSelectionContainer';
+import Overview from './components/UI/Overview';
+import StockChart from './components/StockChart';
+import ErrorModal from './components/errors/ErrorModal';
+import TimeSelectionContainer from './components/TimeSelectionContainer';
 
-import { StyledMainContainer } from './styled';
-import { ResultData, TimeData } from './interfaces';
-import { setUrlParamsBy } from './utils';
+import { StyledMainContainer } from './components/styled';
+import { ResultData, TimeData } from './utils/interfaces';
+import { setUrlParamsBy } from './utils/utils';
 
 function App() {
 	const [stockData, setStockData] = useState<ResultData[]>([]);
