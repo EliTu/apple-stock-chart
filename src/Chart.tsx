@@ -6,23 +6,22 @@ import {
 	Tooltip,
 	CartesianGrid,
 } from 'recharts';
-import { StockChartProps } from './interfaces';
+import CustomTooltip from './CustomTooltip';
+import { ChartData, StockChartProps } from './interfaces';
 import { formatStringByLength } from './utils';
 
 export default function StockChart({ data, xAxisDisplayBy }: StockChartProps) {
-	const formattedChartData = data.map(
-		({ Close, StartTime, StartDate, Date: d }) => {
+	const formattedChartData: ChartData[] = data.map(
+		({ Close, StartTime, StartDate }) => {
 			const formattedTime = formatStringByLength(StartTime, -6);
 			const formattedDate = formatStringByLength(StartDate, -5);
 			return {
-				time: xAxisDisplayBy === 'date' ? formattedDate : formattedTime,
+				Date: formattedDate,
+				Time: formattedTime,
 				Close,
-				date: new Date(d),
 			};
 		}
 	);
-
-	console.log(formattedChartData);
 
 	return (
 		<AreaChart
@@ -37,7 +36,10 @@ export default function StockChart({ data, xAxisDisplayBy }: StockChartProps) {
 			data={formattedChartData}
 		>
 			<CartesianGrid strokeDasharray='3 3' />
-			<XAxis dataKey='time' tickMargin={5} />
+			<XAxis
+				dataKey={xAxisDisplayBy === 'date' ? 'Date' : 'Time'}
+				tickMargin={5}
+			/>
 			<YAxis
 				dataKey='Close'
 				domain={['dataMin', 'dataMax']}
@@ -51,7 +53,7 @@ export default function StockChart({ data, xAxisDisplayBy }: StockChartProps) {
 				stroke='#0f04dfa0'
 				fill='#291ef07f'
 			/>
-			<Tooltip />
+			<Tooltip content={CustomTooltip} />
 		</AreaChart>
 	);
 }

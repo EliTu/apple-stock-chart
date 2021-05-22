@@ -24,3 +24,23 @@ export const StyledTimeButton = styled.button`
 		background-color: #4649f5c5;
 	}
 `;
+
+export const StyledTooltipContainer = styled.div`
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	height: auto;
+	width: 100%;
+	padding: 0.3rem;
+	border: 1px solid #adcaf790;
+	background-color: #161aec96;
+	color: #ebebebeb;
+	text-shadow: 0 0 1px #e4e0d9e1;
+	font-size: 14px;
+	border-radius: 3px;
+`;
+
+export const StyledSpan = styled.span`
+    display: flex;
+    justify-content: space-between;
+`;

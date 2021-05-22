@@ -35,7 +35,12 @@ function App() {
 	return (
 		<StyledMainContainer>
 			<TimeSelectionContainer setTimeData={setTimeData} timeData={timeData} />
-			<StockChart data={stockData} xAxisDisplayBy={'time'} />
+			<StockChart
+				data={stockData}
+				xAxisDisplayBy={
+					timeData.label && /week/gi.test(timeData.label) ? 'date' : 'time'
+				}
+			/>
 		</StyledMainContainer>
 	);
 }

@@ -1,3 +1,6 @@
+type TimeUnits = 'Minutes' | 'Hours';
+
+type TimeAmount = '1' | '5' | '168';
 export interface ResultData {
 	StartDate: string;
 	StartTime: string;
@@ -6,11 +9,8 @@ export interface ResultData {
 	Low: number;
 	Close: number;
 	Volume: number;
-	Date: Date;
+	Date: string;
 }
-
-type TimeUnits = 'Minutes' | 'Hours';
-type TimeAmount = '1' | '5' | '168';
 export interface TimeData {
 	timeUnits: TimeUnits;
 	amount: TimeAmount;
@@ -22,6 +22,11 @@ export interface FetchDataParams {
 	period: TimeAmount;
 }
 
+export interface ChartData {
+	Time: ResultData['StartTime'];
+	Close: ResultData['Close'];
+	Date: ResultData['StartDate'];
+}
 export interface StockChartProps {
 	data: ResultData[];
 	xAxisDisplayBy: 'date' | 'time';
