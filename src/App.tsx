@@ -1,6 +1,7 @@
 import { useState, useEffect, useCallback } from 'react';
 import axios from 'axios';
 
+import Overview from './Overview';
 import StockChart from './StockChart';
 import ErrorModal from './ErrorModal';
 import TimeSelectionContainer from './TimeSelectionContainer';
@@ -46,6 +47,7 @@ function App() {
 	return (
 		<StyledMainContainer>
 			<ErrorModal error={error} />
+			<Overview />
 			<TimeSelectionContainer
 				setTimeData={setTimeData}
 				timeData={timeData}

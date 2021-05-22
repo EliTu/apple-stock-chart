@@ -14,6 +14,27 @@ export const StyledMainContainer = styled(StyledResponsiveContainer)`
 	position: relative;
 `;
 
+export const StyledOverviewContainer = styled(StyledResponsiveContainer)`
+	display: flex;
+	flex-direction: column;
+	margin: 0 0 1rem 0.5rem;
+
+	div {
+		font-size: 28px;
+		font-weight: 800;
+		margin-bottom: 0.1rem;
+	}
+
+	span {
+		color: #6e6e6ef4;
+
+		a {
+			text-decoration: none;
+			color: #686bf7ca;
+		}
+	}
+`;
+
 export const StyledCenteredDiv = styled.div`
 	display: flex;
 	flex-direction: column;
@@ -45,7 +66,7 @@ export const StyledTimeButton = styled.button<{
 	isLoading: boolean;
 }>`
 	height: 100%;
-	width: 20%;
+	width: 50%;
 	cursor: pointer;
 	background: none;
 	border: none;

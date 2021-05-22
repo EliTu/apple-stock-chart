@@ -5,6 +5,7 @@ import {
 	YAxis,
 	Tooltip,
 	CartesianGrid,
+	ResponsiveContainer,
 } from 'recharts';
 import CustomTooltip from './CustomTooltip';
 import { ChartData, StockChartProps } from './interfaces';
@@ -30,10 +31,8 @@ export default function StockChart({
 	);
 
 	return (
-		<StyledResponsiveContainer>
+		<ResponsiveContainer width='90%' height={500}>
 			<AreaChart
-				width={1300}
-				height={500}
 				margin={{
 					top: 20,
 					right: 10,
@@ -77,6 +76,6 @@ export default function StockChart({
 					<Tooltip isAnimationActive={false} content={CustomTooltip} />
 				)}
 			</AreaChart>
-		</StyledResponsiveContainer>
+		</ResponsiveContainer>
 	);
 }
