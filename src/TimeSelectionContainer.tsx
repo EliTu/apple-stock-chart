@@ -31,15 +31,19 @@ function TimeSelectionContainer({
 
 	return (
 		<StyledTimeSelectionContainer>
-			{TIME_SELECTION_UNITS.map(({ label }) => (
-				<StyledTimeButton
-					isSelected={timeData.label === label}
-					key={label}
-					onClick={handleButtonClick}
-				>
-					{isLoadingData ? <Loader /> : label}
-				</StyledTimeButton>
-			))}
+			{TIME_SELECTION_UNITS.map(({ label }) => {
+				const isButtonSelected = timeData.label === label;
+				return (
+					<StyledTimeButton
+						isSelected={isButtonSelected}
+						isLoading={isButtonSelected && isLoadingData}
+						key={label}
+						onClick={handleButtonClick}
+					>
+						{isLoadingData && isButtonSelected ? <Loader /> : label}
+					</StyledTimeButton>
+				);
+			})}
 		</StyledTimeSelectionContainer>
 	);
 }

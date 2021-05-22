@@ -1,5 +1,5 @@
 type TimeUnits = 'Minutes' | 'Hours';
-
+type TimeLabels = '1 Min' | '5 Mins' | '1 Hour' | '1 Week';
 type TimeAmount = '1' | '5' | '168';
 export interface ResultData {
 	StartDate: string;
@@ -14,7 +14,7 @@ export interface ResultData {
 export interface TimeData {
 	timeUnits: TimeUnits;
 	amount: TimeAmount;
-	label?: string;
+	label?: TimeLabels;
 }
 
 export interface FetchDataParams {

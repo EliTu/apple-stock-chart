@@ -40,17 +40,21 @@ export const StyledTimeSelectionContainer = styled.div`
 	display: flex;
 `;
 
-export const StyledTimeButton = styled.button<{ isSelected: boolean }>`
+export const StyledTimeButton = styled.button<{
+	isSelected: boolean;
+	isLoading: boolean;
+}>`
 	height: 100%;
 	width: 20%;
 	cursor: pointer;
-	background-color: ${({ isSelected }) =>
-		!isSelected ? '#3c3fdb7b' : '#3f42ec9e'};
+	background: none;
 	border: none;
+	border-bottom: ${({ isSelected }) =>
+		isSelected ? '4px solid #1317fcd6' : '2px solid #3461f7ca'};
 	transition: all 0.2s ease-in;
-
+	background-color: ${({ isLoading }) => (isLoading ? '#161aec96' : '')};
 	&:hover {
-		background-color: #4649f5c5;
+		background-color: #7476ff55;
 	}
 `;
 
