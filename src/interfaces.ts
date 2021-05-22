@@ -36,3 +36,7 @@ export interface TimeSelectionContainerProps {
 	timeData: TimeData;
 	setTimeData: React.Dispatch<React.SetStateAction<TimeData>>;
 }
+
+export interface ErrorModalProps {
+	error: string;
+}

@@ -1,9 +1,29 @@
 import styled from 'styled-components';
 
-export const StyledMainContainer = styled.div`
+export const StyledResponsiveContainer = styled.div`
 	width: 100%;
 	height: 100%;
-	margin: 0.5rem;
+	margin: 0rem;
+`;
+
+export const StyledMainContainer = styled(StyledResponsiveContainer)`
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	font-family: Verdana, Geneva, Tahoma, sans-serif;
+	position: relative;
+`;
+
+export const StyledErrorModal = styled.div`
+	position: absolute;
+	top: 0;
+	left: 40%;
+	width: auto;
+	height: auto;
+	padding: 1rem;
+	background-color: #f333339b;
+	color: white;
+	border-radius: 3px;
 `;
 
 export const StyledTimeSelectionContainer = styled.div`
@@ -41,6 +61,6 @@ export const StyledTooltipContainer = styled.div`
 `;
 
 export const StyledSpan = styled.span`
-    display: flex;
-    justify-content: space-between;
+	display: flex;
+	justify-content: space-between;
 `;

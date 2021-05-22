@@ -1,15 +1,17 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import axios from 'axios';
 
 import StockChart from './Chart';
-import { StyledMainContainer } from './styled';
+import ErrorModal from './ErrorModal';
+import TimeSelectionContainer from './TimeSelectionContainer';
 
+import { StyledMainContainer } from './styled';
 import { ResultData, TimeData } from './interfaces';
 import { setUrlParamsBy } from './utils';
-import TimeSelectionContainer from './TimeSelectionContainer';
 
 function App() {
 	const [stockData, setStockData] = useState<ResultData[]>([]);
+	const [error, setError] = useState<string>('');
 	const [timeData, setTimeData] = useState<TimeData>({
 		timeUnits: 'Minutes',
 		amount: '1',
@@ -25,7 +27,9 @@ function App() {
 			);
 
 			if (status === 200 && data.length) setStockData(data);
-		} catch (error) {}
+		} catch (error: any) {
+			setError(error.message);
+		}
 	}, [timeData.amount, timeData.timeUnits]);
 
 	useEffect(() => {
@@ -34,6 +38,7 @@ function App() {
 
 	return (
 		<StyledMainContainer>
+			<ErrorModal error={error} />
 			<TimeSelectionContainer setTimeData={setTimeData} timeData={timeData} />
 			<StockChart
 				data={stockData}
