@@ -37,13 +37,15 @@ export const StyledTimeSelectionContainer = styled.div`
 	height: 2rem;
 	width: 30%;
 	margin-left: 4.4rem;
+	display: flex;
 `;
 
-export const StyledTimeButton = styled.button`
+export const StyledTimeButton = styled.button<{ isSelected: boolean }>`
 	height: 100%;
 	width: 20%;
 	cursor: pointer;
-	background-color: #3c3fdb7b;
+	background-color: ${({ isSelected }) =>
+		!isSelected ? '#3c3fdb7b' : '#3f42ec9e'};
 	border: none;
 	transition: all 0.2s ease-in;
 
@@ -80,4 +82,8 @@ export const StyledClickableSpan = styled.span`
 	&:hover {
 		color: #272af3df;
 	}
+`;
+
+export const StyledSvgImage = styled.img`
+	margin-left: 0.5rem;
 `;

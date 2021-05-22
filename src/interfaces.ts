@@ -29,12 +29,14 @@ export interface ChartData {
 }
 export interface StockChartProps {
 	data: ResultData[];
+	isLoadingData: boolean;
 	xAxisDisplayBy: 'date' | 'time';
 	isError: boolean;
 }
 
 export interface TimeSelectionContainerProps {
 	timeData: TimeData;
+	isLoadingData: boolean;
 	setTimeData: React.Dispatch<React.SetStateAction<TimeData>>;
 }
 

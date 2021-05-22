@@ -11,10 +11,12 @@ import { setUrlParamsBy } from './utils';
 
 function App() {
 	const [stockData, setStockData] = useState<ResultData[]>([]);
+	const [isLoadingData, setIsLoadingData] = useState<boolean>(true);
 	const [error, setError] = useState<string>('');
 	const [timeData, setTimeData] = useState<TimeData>({
 		timeUnits: 'Minutes',
 		amount: '1',
+		label: '1 Min',
 	});
 
 	const fetchApiData = useCallback(async () => {
@@ -27,11 +29,13 @@ function App() {
 			);
 
 			if (status === 200 && data.length) {
-				setStockData(data);
+				setStockData(() => data);
+				setIsLoadingData(() => false);
 				setError('');
 			}
 		} catch (error: any) {
 			setError(error.message);
+			setIsLoadingData(false);
 		}
 	}, [timeData.amount, timeData.timeUnits]);
 
@@ -42,9 +46,14 @@ function App() {
 	return (
 		<StyledMainContainer>
 			<ErrorModal error={error} />
-			<TimeSelectionContainer setTimeData={setTimeData} timeData={timeData} />
+			<TimeSelectionContainer
+				setTimeData={setTimeData}
+				timeData={timeData}
+				isLoadingData={isLoadingData}
+			/>
 			<StockChart
 				data={stockData}
+				isLoadingData={isLoadingData}
 				isError={!!error}
 				xAxisDisplayBy={
 					timeData.label && /week/gi.test(timeData.label) ? 'date' : 'time'

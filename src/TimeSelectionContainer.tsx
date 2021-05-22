@@ -1,4 +1,7 @@
 import { SyntheticEvent } from 'react';
+
+import Loader from './Loader';
+
 import { TimeData, TimeSelectionContainerProps } from './interfaces';
 import { StyledTimeSelectionContainer, StyledTimeButton } from './styled';
 
@@ -12,6 +15,7 @@ const TIME_SELECTION_UNITS: TimeData[] = [
 function TimeSelectionContainer({
 	setTimeData,
 	timeData,
+	isLoadingData,
 }: TimeSelectionContainerProps) {
 	const handleButtonClick = ({
 		currentTarget,
@@ -28,8 +32,12 @@ function TimeSelectionContainer({
 	return (
 		<StyledTimeSelectionContainer>
 			{TIME_SELECTION_UNITS.map(({ label }) => (
-				<StyledTimeButton key={label} onClick={handleButtonClick}>
-					{label}
+				<StyledTimeButton
+					isSelected={timeData.label === label}
+					key={label}
+					onClick={handleButtonClick}
+				>
+					{isLoadingData ? <Loader /> : label}
 				</StyledTimeButton>
 			))}
 		</StyledTimeSelectionContainer>

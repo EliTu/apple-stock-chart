@@ -15,6 +15,7 @@ export default function StockChart({
 	data,
 	xAxisDisplayBy,
 	isError,
+	isLoadingData,
 }: StockChartProps) {
 	const formattedChartData: ChartData[] = data.map(
 		({ Close, StartTime, StartDate }) => {
@@ -40,7 +41,10 @@ export default function StockChart({
 					bottom: 0,
 				}}
 				data={formattedChartData}
-				style={{ filter: isError ? 'opacity(0.30)' : '' }}
+				style={{
+					filter: isError || isLoadingData ? 'opacity(0.30)' : '',
+					cursor: 'crosshair',
+				}}
 			>
 				<CartesianGrid strokeDasharray='3 3' />
 				<defs>
@@ -69,11 +73,10 @@ export default function StockChart({
 					fill='url(#colorUv)'
 					fillOpacity={0.4}
 				/>
-				{!isError && (
+				{!isError && !isLoadingData && (
 					<Tooltip isAnimationActive={false} content={CustomTooltip} />
 				)}
 			</AreaChart>
 		</StyledResponsiveContainer>
 	);
-	
 }

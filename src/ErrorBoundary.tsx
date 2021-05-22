@@ -21,7 +21,7 @@ export class ErrorBoundary extends React.Component {
 			return (
 				<StyledResponsiveContainer>
 					<StyledCenteredDiv>
-						<h1>Something went wrong and the app has crashed :(</h1>
+						<h1>OH no... the app has crashed :(</h1>
 						<h2>
 							Try to{' '}
 							<StyledClickableSpan onClick={() => window.location.reload()}>
