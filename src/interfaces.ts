@@ -30,6 +30,7 @@ export interface ChartData {
 export interface StockChartProps {
 	data: ResultData[];
 	xAxisDisplayBy: 'date' | 'time';
+	isError: boolean;
 }
 
 export interface TimeSelectionContainerProps {

@@ -1,7 +1,7 @@
 import { useState, useEffect, useCallback } from 'react';
 import axios from 'axios';
 
-import StockChart from './Chart';
+import StockChart from './StockChart';
 import ErrorModal from './ErrorModal';
 import TimeSelectionContainer from './TimeSelectionContainer';
 
@@ -26,7 +26,10 @@ function App() {
 				})
 			);
 
-			if (status === 200 && data.length) setStockData(data);
+			if (status === 200 && data.length) {
+				setStockData(data);
+				setError('');
+			}
 		} catch (error: any) {
 			setError(error.message);
 		}
@@ -42,6 +45,7 @@ function App() {
 			<TimeSelectionContainer setTimeData={setTimeData} timeData={timeData} />
 			<StockChart
 				data={stockData}
+				isError={!!error}
 				xAxisDisplayBy={
 					timeData.label && /week/gi.test(timeData.label) ? 'date' : 'time'
 				}

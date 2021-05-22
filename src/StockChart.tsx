@@ -11,7 +11,11 @@ import { ChartData, StockChartProps } from './interfaces';
 import { StyledResponsiveContainer } from './styled';
 import { formatStringByLength } from './utils';
 
-export default function StockChart({ data, xAxisDisplayBy }: StockChartProps) {
+export default function StockChart({
+	data,
+	xAxisDisplayBy,
+	isError,
+}: StockChartProps) {
 	const formattedChartData: ChartData[] = data.map(
 		({ Close, StartTime, StartDate }) => {
 			const formattedTime = formatStringByLength(StartTime, -6);
@@ -36,6 +40,7 @@ export default function StockChart({ data, xAxisDisplayBy }: StockChartProps) {
 					bottom: 0,
 				}}
 				data={formattedChartData}
+				style={{ filter: isError ? 'opacity(0.30)' : '' }}
 			>
 				<CartesianGrid strokeDasharray='3 3' />
 				<defs>
@@ -64,7 +69,9 @@ export default function StockChart({ data, xAxisDisplayBy }: StockChartProps) {
 					fill='url(#colorUv)'
 					fillOpacity={0.4}
 				/>
-				<Tooltip content={CustomTooltip} />
+				{!isError && (
+					<Tooltip isAnimationActive={false} content={CustomTooltip} />
+				)}
 			</AreaChart>
 		</StyledResponsiveContainer>
 	);
