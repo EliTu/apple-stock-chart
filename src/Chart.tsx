@@ -36,6 +36,12 @@ export default function StockChart({ data, xAxisDisplayBy }: StockChartProps) {
 			data={formattedChartData}
 		>
 			<CartesianGrid strokeDasharray='3 3' />
+			<defs>
+				<linearGradient id='colorUv' x1='0' y1='0' x2='0' y2='1'>
+					<stop offset='40%' stopColor='#063cebcf' stopOpacity={0.7} />
+					<stop offset='90%' stopColor='#FFFFFF' stopOpacity={0.1} />
+				</linearGradient>
+			</defs>
 			<XAxis
 				dataKey={xAxisDisplayBy === 'date' ? 'Date' : 'Time'}
 				tickMargin={5}
@@ -50,8 +56,9 @@ export default function StockChart({ data, xAxisDisplayBy }: StockChartProps) {
 			<Area
 				type='monotone'
 				dataKey='Close'
-				stroke='#0f04dfa0'
-				fill='#291ef07f'
+				stroke='#080185f0'
+				fill='url(#colorUv)'
+				fillOpacity={0.4}
 			/>
 			<Tooltip content={CustomTooltip} />
 		</AreaChart>
