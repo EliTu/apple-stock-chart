@@ -1,5 +1,6 @@
 {
 	"name": "apple-stock-chart",
+	"homepage": "https://elitu.github.io/apple-stock-chart.github.io/",
 	"version": "0.1.0",
 	"private": true,
 	"dependencies": {
